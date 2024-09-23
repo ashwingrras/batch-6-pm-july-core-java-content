@@ -1,0 +1,326 @@
+String Handling In Java:
+In Java, String is a fundamental class that represents sequences of characters. It's used extensively in Java programming for storing and manipulating text-based data.
+
+Definition: String is a class in Java defined in the java.lang package.
+
+Way to initialize/creating String:
+String str1 = "Hello";  // String literal
+String str2 = new String("World");  // Using new keyword
+
+Immutable: Strings in Java are immutable, meaning their values cannot be changed after they are created. Any operation that seems to modify a String actually creates a new String object.
+
+Immutable Nature:
+Because String objects are immutable, any operation that seems to modify a String actually creates a new String object. This characteristic is important for thread safety and caching purposes.
+
+Immutability Example:
+String str = "Hello";
+str.concat(" World");
+System.out.println(str);
+String original = "Hello";
+String modified = original.concat(" World");
+System.out.println(original);
+System.out.println(modified);
+
+	Immutable String Benefits:
+Thread Safety: Immutable strings are inherently thread-safe because their content cannot be modified after creation. Multiple threads can safely access and share immutable strings.
+Caching: String literals are cached in the JVM's string pool. Reusing immutable strings reduces memory consumption and improves performance.
+Security: Immutable strings are used in cryptographic algorithms to ensure that string values cannot be altered during processing.
+
+	String Pool:
+Java maintains a special memory area called the "String pool" for storing String literals. When you create a String using a literal, Java first checks the String pool. If a String with the same content already exists in the pool, Java returns a reference to that String object instead of creating a new one.
+
+String Literals vs. new Keyword:
+Using string literals (e.g., "Hello") directly benefits from the String pool, promoting memory efficiency and reusability. On the other hand, using the new keyword to create strings (new String("World")) always creates a new object in the heap, irrespective of whether the value is already present in the pool.
+String name = “Hello”; // literals
+String name2 = new String(“Hello”);
+
+	String Interning:
+You can use the intern() method to add a String object to the String pool explicitly. This can be useful for optimizing memory usage and ensuring consistent string references.
+	String internedStr = new String("Hello").intern(); // Add 'str' to String pool
+
+	Benefits of String Pool:
+Memory Efficiency: String pooling conserves memory by reusing common string literals.
+Performance: String interning can improve performance by reducing object creation and garbage collection overhead.
+
+When you write String str1 = "Hello";, the following steps occur:
+
+Check String Pool: The JVM checks the string pool for the existence of "Hello".
+Create or Reuse: If "Hello" is not found in the pool, a new String object is created with the value "Hello" and added to the pool. If "Hello" already exists in the pool, the existing String object is reused.
+Assignment: The variable str1 is assigned a reference to the String object in the string pool.
+
+
+String Comparison
+In Java, you can compare strings using the equals() method for content comparison and the == operator for reference comparison.
+
+Example 1:
+String str1 = "Hello";
+String str2 = "Hello";
+
+System.out.println(str1.equals(str2)); //true,  values / content
+System.out.println(str1 == str2); //true, reference
+String str3 = new String("Hello");
+System.out.println(str1 == str3); // false
+System.out.println(str1.equals(str3)); // true
+
+
+
+
+
+The String Constructors: the String class provides several constructors to create string objects
+String Literals
+New String(“”)
+Empty String
+From Character Array:
+char[] charArray = {'J', 'a', 'v', 'a'};
+String str3 = new String(charArray);
+Creating a String from a Subarray of a Character Array
+char[] charArray = {'H', 'e', 'l', 'l', 'o'};
+String str4 = new String(charArray, 0, 3); // "Hel"
+Creating a String from a Byte Array
+byte[] byteArray = {72, 101, 108, 108, 111}; // ASCII values for "Hello"
+String str5 = new String(byteArray);
+ Creating a String from a Subarray of a Byte Array
+byte[] byteArray = {72, 101, 108, 108, 111}; // ASCII values for "Hello"
+String str6 = new String(byteArray, 0, 3); // "Hel"
+String Length: The length of a string is the number of characters it contains. It is determined using the length() method.
+Special String Operations: Java's String class provides various methods for manipulating strings, such as:
+Concatenation (concat(), + operator)
+Comparison (equals(), equalsIgnoreCase())
+Conversion (toUpperCase(), toLowerCase())
+Trimming (trim())
+String Concatenation with Other Data Types: When concatenating a string with other data types (e.g., numbers), Java automatically converts non-string values to strings.
+int num = 10;
+String str = "The value is: " + num;  // "The value is: 10"
+Character Extraction:
+charAt(): The charAt(index) method returns the character at the specified index position in a string
+String str = "Hello";
+char ch = str.charAt(1);  // 'e'
+getChars(): The getChars(srcBegin, srcEnd, dest, destBegin) method copies characters from a string into a destination character array
+String str = "Hello";
+char[] charArray = new char[3];
+str.getChars(0, 3, charArray, 0);  // Copies "Hel" into charArray
+toCharArray(): The toCharArray() method converts the string into a character array, returning a newly allocated character array containing all the characters of the string
+String str = "Hello";
+char[] charArray = str.toCharArray(); // {'H', 'e', 'l', 'l', 'o'}
+getBytes(): The getBytes() method converts a string into a byte array using the platform's default character encoding
+String str = "Hello";
+byte[] byteArray = str.getBytes();  // Converts "Hello" into byte array
+regionMatches()
+The regionMatches() method compares a specific region of the invoking string with another region of a specified string.
+boolean regionMatches(int toffset, String other, int ooffset, int len)
+Here's what each parameter means:
+
+
+toffset: The starting offset in the current string.
+other: The other string to compare against.
+ooffset: The starting offset in the other string.
+len: The number of characters to compare.
+
+
+It has two variants:
+regionMatches(int toffset, String other, int ooffset, int len): Compares a specific region of the invoking string with the specified region of the other string.
+regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len): Compares a specific region of the invoking string with the specified region of the other string, ignoring case if ignoreCase is true.
+String str1 = "Hello World";
+String str2 = "World";
+boolean result = str1.regionMatches(6, str2, 0, 5); // true, compares "World" in str1 starting at index 6 with str2
+startsWith() and endsWith(): The startsWith() and endsWith() methods check whether the string starts or ends with a specified prefix or suffix, respectively.
+String str = "Hello World";
+boolean startsWithHello = str.startsWith("Hello"); // true
+boolean endsWithWorld = str.endsWith("World"); // true
+compareTo():
+The compareTo() method compares two strings lexicographically (dictionary order). It returns an integer.
+0 if the strings are equal.
+A positive value if the invoking string is lexicographically greater than the specified string.
+A negative value if the invoking string is lexicographically less than the specified string.
+String str1 = "apple";
+String str2 = "banana";
+int result = str1.compareTo(str2); // Negative value because "apple" comes before "banana" in dictionary order
+Searching Strings: String searching can be performed using methods like indexOf(), lastIndexOf(), and contains()
+String str = "Hello World";
+int index = str.indexOf("o"); // 4, first occurrence of 'o'
+int lastIndex = str.lastIndexOf("o"); // 7, last occurrence of 'o'
+boolean containsWorld = str.contains("World");
+substring(): The substring(int beginIndex) and substring(int beginIndex, int endIndex) methods return a substring of the original string.
+String str = "Hello World";
+String sub1 = str.substring(6); // "World"
+String sub2 = str.substring(0, 5); // "Hello"
+concat(): The concat(String str) method concatenates the specified string to the end of the invoking string.
+String str1 = "Hello";
+String str2 = " World";
+String result = str1.concat(str2); // "Hello World"
+replace(): The replace(char oldChar, char newChar) and replace(CharSequence target, CharSequence replacement) methods replace occurrences of a specified character or substring with another character or substring.
+String str = "Hello Java";
+String replaced = str.replace('a', 'o'); // "Hello Jovo"
+trim(): The trim() method removes leading and trailing whitespaces from the string. Whitespace characters include space, tab, newline, carriage return, and other non-printable characters with ASCII code less than or equal to 32.
+“a”: 97 “A”: 65
+
+String str = "   Hello   ";
+String trimmed = str.trim(); // "Hello"
+strip(): strip() is introduced in Java 11 as part of the String class. it handles Unicode whitespace characters, including non-breaking spaces and other similar characters.
+String str = "\u2005\u2005Hello, World!\u2005\u2005";
+String strippedStr = str.strip(); // Unicode U+2005 is a four-per-em space
+System.out.println(strippedStr); // Output: "Hello, World!"
+split(): Splits the string into an array of substrings based on the specified regular expression.
+String str = "apple,banana,orange";
+String[] splitArray = str.split(","); // splitArray will be {"apple", "banana", "orange"}
+compareTo(): Compares two strings lexicographically. Returns a negative integer, zero, or a positive integer as the invoking string is less than, equal to, or greater than the anotherString.
+String str1 = "apple";
+String str2 = "banana";
+int result = str1.compareTo(str2); // result will be a negative value since "apple" comes before "banana" lexicographically
+Data Conversion Using valueOf(): The valueOf() method converts data types to their string representation
+int num = 123;
+String str = String.valueOf(num); // "123"
+intern(): The intern() method in Java is used to add the string to the pool of strings if it's not already present. If a string with the same contents already exists in the pool, then a reference to that string is returned.
+Example:
+public class StringInternExample {
+    public static void main(String[] args) {
+        String s1 = new String("hello");
+        String s2 = "hello";
+
+        // Using intern() to get the canonical representation
+        String s3 = s1.intern();
+
+        // Comparing references
+        System.out.println("s1 == s2: " + (s1 == s2));
+        System.out.println("s2 == s3: " + (s2 == s3));
+
+        // Comparing contents
+        System.out.println("s1.equals(s2): " + s1.equals(s2));
+        System.out.println("s2.equals(s3): " + s2.equals(s3));
+    }
+}
+indexOf(String str) and lastIndexOf(String str): Returns the index of the first or last occurrence of the specified substring within the string.
+String str = "Hello World";
+int firstIndex = str.indexOf("World"); // firstIndex will be 6
+int lastIndex = str.lastIndexOf("o"); // lastIndex will be 7
+join(CharSequence delimiter, CharSequence... elements): Joins the elements of the provided array into a single string with the specified delimiter.
+String[] array = {"apple", "banana", "orange"};
+String joinedString = String.join(", ", array);
+
+
+
+
+StringBuffer: StringBuffer is a mutable sequence of characters. Unlike String, which is immutable (meaning once created, its contents cannot be changed), StringBuffer allows you to modify its contents. This can be particularly useful when you need to perform a lot of string manipulation operations.
+StringBuffer is thread-safe, meaning it is synchronized, making it suitable for use in multi-threaded environments where multiple threads may access and modify the same StringBuffer object simultaneously.
+String Buffer();
+String Buffer(“Hello”);
+String Buffer(int capacity);
+	String Buffer Methods:
+append(String s),
+ insert(int offset, String s),
+replace(int startIndex, int endIndex, String str),
+delete(int startIndex, int endIndex)
+deleteCharAt()
+reverse()
+charAt(int index)
+substring(int beginIndex), substring(int beginIndex, int endIndex)
+capacity(): The capacity() method of the StringBuffer class returns the current capacity of the buffer. The default capacity of the buffer is 16. If the number of character increases from its current capacity, it increases the capacity by (oldcapacity*2)+2. For example if your current capacity is 16, it will be (16*2)+2=34.
+The capacity is the length of that internal array, not the length of the string it represents.
+The capacity of a StringBuffer is automatically increased as needed when characters are appended to it, but it may also be manually adjusted using ensureCapacity().
+Example:
+StringBuffer sb=new StringBuffer();
+System.out.println(sb.capacity());//default 16
+sb.append("Hello");
+System.out.println(sb.capacity());//now 16
+sb.append("java is my favourite language");
+System.out.println(sb.capacity());//now (16*2)+2=34 i.e (oldcapacity*2)+2
+ensureCapacity(int minimumCapacity): The ensureCapacity() method of the StringBuffer class ensures that the given capacity is the minimum to the current capacity. If it is greater than the current capacity, it increases the capacity by (oldcapacity*2)+2. For example if your current capacity is 16, it will be (16*2)+2=34.
+This method ensures that the capacity of the StringBuffer is at least equal to the specified minimumCapacity.
+If the current capacity of the StringBuffer is less than the minimumCapacity, it is increased to minimumCapacity. Otherwise, it remains unchanged.
+This method can be used to minimize the number of reallocations of the internal buffer, which can improve performance in situations where you know in advance how large the StringBuffer needs to be.
+		Example:
+StringBuffer sb=new StringBuffer();
+System.out.println(sb.capacity());//default 16
+sb.append("Hello");
+System.out.println(sb.capacity());//now 16
+sb.append("java is my favourite language");
+System.out.println(sb.capacity());//now (16*2)+2=34 i.e (oldcapacity*2)+2
+sb.ensureCapacity(10);//now no change
+System.out.println(sb.capacity());//now 34
+sb.ensureCapacity(50);//now (34*2)+2
+System.out.println(sb.capacity());//now 70
+
+
+Example:
+public class StringBufferExample {
+    public static void main(String[] args) {
+        // Create a StringBuffer object
+        StringBuffer stringBuffer = new StringBuffer("Hello");
+        // Append to the StringBuffer
+        stringBuffer.append(" World");
+        // Insert into the StringBuffer
+        stringBuffer.insert(5, "Awesome ");
+        // Replace a portion of the StringBuffer
+        stringBuffer.replace(6, 7, ",");
+        // Delete from the StringBuffer
+        stringBuffer.delete(11, 16);
+        // Reverse the StringBuffer
+        stringBuffer.reverse();
+        // Convert StringBuffer to String
+        String result = stringBuffer.toString();
+        // Print the result
+        System.out.println(result); // Output: "olleh ,emoseW"
+    }
+}
+
+
+StringBuilder
+The Java StringBuilder class is the same as the StringBuffer class except that it is non-synchronized.
+StringTokenizer
+The java.util.StringTokenizer class allows you to break a String into tokens.  By default, the delimiter used to split the string into tokens is whitespace, but you can specify a custom delimiter as well.
+Constructors:
+StringTokenizer(String str)
+ StringTokenizer(String str, String delimiter)
+StringTokenizer(String str, String delimiter, boolean returnValue)
+
+
+	Examples:
+	import java.util.StringTokenizer;
+public class StringTokenizerExample {
+    public static void main(String[] args) {
+        // Create a string with multiple words separated by whitespace
+        String sentence = "Hi, how are you?";
+
+
+        // Create a StringTokenizer object with default delimiter (whitespace)
+        StringTokenizer tokenizer = new StringTokenizer(sentence);
+
+
+        // Iterate through the tokens and print each token
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken();
+            System.out.println(token);
+        }
+
+
+        // Create a string with multiple words separated by comma
+        String csvData = "Ashwin,Prerna,Nischal,Raju, Mohit";
+
+
+        // Create a StringTokenizer object with custom delimiter (comma)
+        StringTokenizer csvTokenizer = new StringTokenizer(csvData, ",");
+
+
+        // Iterate through the tokens and print each token
+        while (csvTokenizer.hasMoreTokens()) {
+            String token = csvTokenizer.nextToken();
+            System.out.println(token);
+        }
+    }
+}
+
+
+	Methods:
+boolean hasMoreTokens(): It checks if there are more tokens available.
+nextToken(): It returns the next token from the StringTokenizer object
+String nextToken(String delimiter): It returns the next token based on the delimiter.
+boolean hasMoreElements(): It is the same as hasMoreTokens() method.
+Object nextElement(): It is the same as nextToken() but its return type is Object.
+int countTokens(): It returns the total number of tokens.
+	Example:
+   StringTokenizer st = new StringTokenizer("Hello World"," ");
+     while (st.hasMoreTokens())
+    {
+         System.out.println(st.nextToken());
+     }
+ }
