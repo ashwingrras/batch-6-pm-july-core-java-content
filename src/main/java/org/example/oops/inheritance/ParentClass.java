@@ -4,13 +4,17 @@ public class ParentClass extends GrandParent
 {
     int a = 15;
 
+    int b = 2222;
+
      public ParentClass()
     {
         System.out.println(" at ParentClass constructor ");
+        //modulus(10,2);
     }
 
     public int sum(int a, int b)
     {
+        //
         System.out.println(" at parent class sum method ");
         return a * b;
     }

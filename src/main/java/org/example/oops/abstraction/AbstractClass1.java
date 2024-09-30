@@ -21,7 +21,7 @@ import java.util.Scanner;
 {
 
     // abstract method
-     public abstract int sum(int a, int b);
+     protected abstract int sum(int a, int b);
 
     // abstract method
     public abstract int multiply(int a, int b);
