@@ -25,13 +25,14 @@ public class MainClassExample1
         System.out.println("inside MainClassExample1 example");
         //ParentClass parentClass = new ParentClass();
         ChildClass childClass = new ChildClass(); // child, parent, grandparent
-        childClass.sum(10,5);
+        childClass.callParentMethod();
+        /*childClass.sum(10,5);
         childClass.multiply(10,2);
         childClass.modulus(10,3);
-        childClass.callParentMethod();
+        childClass.callParentMethod();*/
         //
-        ((ParentClass)childClass).sum(18,2);
-        ((GrandParent)childClass).sum(18,2);
+        //((ParentClass)childClass).sum(18,2);
+        //((GrandParent)childClass).sum(18,2);
 
 
 

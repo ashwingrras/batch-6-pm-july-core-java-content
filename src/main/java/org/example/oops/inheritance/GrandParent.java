@@ -17,10 +17,10 @@ public class GrandParent
         return  a % b;
     }
 
-    public int sum(int a, int b)
+    /*public int sum(int a, int b)
     {
         System.out.println(" at GrandParent class sum method ");
         return a * b;
-    }
+    }*/
 
 }

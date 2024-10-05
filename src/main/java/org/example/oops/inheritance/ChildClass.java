@@ -26,15 +26,16 @@ public class ChildClass extends ParentClass
         System.out.println(this.b);
         double d = 10; // implicit
         int a = (int) 15.15; // explicit
-        System.out.println(((GrandParent)this).b);
-        System.out.println(((GrandParent)this).sum(3,3));
+        //System.out.println(((GrandParent)this).b);
+        //System.out.println(((GrandParent)this).sum(3,3));
         super.sum(10,5);
     }
 
 
     public int sum(int a, int b)
     {
-        super.sum(10,4);
+        //super.sum(10,4);
+        //((GrandParent)this).sum(3,3);
         System.out.println(" at child class sum method ****** ");
         return a + b;
     }

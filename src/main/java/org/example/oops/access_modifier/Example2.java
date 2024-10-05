@@ -2,10 +2,6 @@ package org.example.oops.access_modifier;
 
 public class Example2
 {
-    public static void main(String[] args)
-    {
-
-    }
 
     void sum()
     {

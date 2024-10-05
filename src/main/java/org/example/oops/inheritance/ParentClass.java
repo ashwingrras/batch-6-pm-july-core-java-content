@@ -16,6 +16,7 @@ public class ParentClass extends GrandParent
     {
         //
         System.out.println(" at parent class sum method ");
+        //System.out.println(((GrandParent)this).sum(3,3));
         return a * b;
     }
 

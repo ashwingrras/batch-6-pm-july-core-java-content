@@ -87,7 +87,7 @@ class SubClassExample1
 
     static int checkStatic = 20;
 
-     int sum(int a, int b)
+     protected int sum(int a, int b)
     {
         return a + b;
     }

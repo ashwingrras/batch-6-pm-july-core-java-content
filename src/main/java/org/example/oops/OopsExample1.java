@@ -37,6 +37,24 @@ package org.example.oops;
         4.1 allow on same package but also allow on different package with relation ( inheritance )
 
 
+    OOPS
+    1. constructor
+        1.1 default
+        1.2 parameterized
+        1.3 copy
+    2. encapsulation : setter/getter
+    3. inheritance
+       3.1 single
+       3.2 multi level
+       3.3 hierarchical
+       3.4
+    4.
+
+    A : sum
+    B : sum
+
+    class c  implements A, B
+    sum()
 
  */
 
