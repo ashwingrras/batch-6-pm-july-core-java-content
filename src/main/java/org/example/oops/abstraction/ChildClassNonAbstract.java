@@ -23,4 +23,9 @@ public class ChildClassNonAbstract extends ParentAbstract implements TestInterfa
     public int sumOfTwo(int a, int b) {
         return a + b;
     }
+
+    @Override
+    public int sumOfTwo(int a, int b, int c) {
+        return 0;
+    }
 }

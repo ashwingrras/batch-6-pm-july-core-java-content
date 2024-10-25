@@ -13,4 +13,9 @@ public class TestClass implements TestInterface
     public int sumOfTwo(int a, int b) {
         return 0;
     }
+
+    @Override
+    public int sumOfTwo(int a, int b, int c) {
+        return 0;
+    }
 }

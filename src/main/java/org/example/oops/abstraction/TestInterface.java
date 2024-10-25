@@ -11,5 +11,6 @@ public interface TestInterface
     }*/
 
     int sumOfTwo(int a, int b); // public and abstract implicitly
+    int sumOfTwo(int a, int b, int c); // public and abstract implicitly
 
 }
