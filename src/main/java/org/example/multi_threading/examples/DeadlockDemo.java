@@ -1,13 +1,13 @@
 package org.example.multi_threading.examples;
 
 class Threaddemo1 extends Thread{
-    private String name1 = "Resource 1";
-    private String name2 = "Resource 2";
+    private String name1 = "Vakul";
+    private String name2 = "Manoj";
    public void run()
    {
        System.out.println("at run method thread1 start");
        // synchronized block
-       synchronized(name1)
+       synchronized(name1) // vakul waiting for manoj
        {
         System.out.println("Thread 1 holding : " +name1);
         try
@@ -17,25 +17,27 @@ class Threaddemo1 extends Thread{
             // TODO: handle exception
         }
            // synchronized block
-            synchronized(name2)
+            synchronized(name2) // manoj
             {
                 System.out.println("Thread 1 holding : " +name2);
                 //end
             }
         //end
+           //
+           System.out.println(" end of thread1 run method");
        }
        //
        System.out.println("at run method thread1 end");
    }
 }
 class Threaddemo2 extends Thread{
-    private String name1 = "Resource 1";
-    private String name2 = "Resource 2";
+    private String name1 = "Vakul";
+    private String name2 = "Manoj";
    public void run()
    {
        System.out.println("at run method thread2 start");
        // synchronized block
-       synchronized(name2)
+       synchronized(name2) // manoj waiting for vakul
        { // name1
         System.out.println("Thread 2 holding : " +name2);
         try
@@ -45,7 +47,7 @@ class Threaddemo2 extends Thread{
             // TODO: handle exception
         }
            // synchronized block
-            synchronized(name1)
+            synchronized(name1) // vakul
             { // name2
                 System.out.println("Thread 2 holding : " +name1);
             }
@@ -63,7 +65,8 @@ public class DeadlockDemo {
         d2.start();
         System.out.println("d1: "+d1.getState());
         System.out.println("d2: "+d2.getState());
-        try {
+        try
+        {
             Thread.sleep(1000);
             System.out.println("d1: "+d1.getState());
             System.out.println("d2: "+d2.getState());

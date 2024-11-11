@@ -3,15 +3,15 @@ package org.example.multi_threading.examples;
 public class SynchronizedWithLambda
 {
     public static String resources = "vikash";
+    //public static String resources1 = "vakul";
     public static void main(String[] args)
     {
         Thread thread1 = new Thread(() -> {
-
             synchronized(resources)
             {
                 System.out.println("at thread1 start");
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(7000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -24,10 +24,9 @@ public class SynchronizedWithLambda
         {
             synchronized(resources)
             {
-
                 System.out.println("at thread2 start");
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(4000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

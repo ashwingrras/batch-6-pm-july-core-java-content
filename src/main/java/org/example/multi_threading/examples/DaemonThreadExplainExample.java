@@ -18,7 +18,8 @@ public class DaemonThreadExplainExample {
         daemonThread.start();
         nonDaemonThread.start();
 
-        try {
+        try
+        {
             //Thread.sleep(11000);
             //daemonThread.join();
         } catch (Exception e) {
