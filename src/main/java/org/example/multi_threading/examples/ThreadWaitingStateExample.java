@@ -49,8 +49,8 @@ public class ThreadWaitingStateExample {
             synchronized (lock)
             {
                 //lock.notify();
-                //lock.notify();
-                lock.notifyAll();
+                lock.notify();
+                //lock.notifyAll();
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
