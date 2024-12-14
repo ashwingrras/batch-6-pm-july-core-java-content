@@ -58,5 +58,8 @@ public class DateTimeExample
         calendar.set(1990,0,1);
         System.out.println(" calendar "+calendar.getTime());
 
+        Object obj = "data";
+        System.out.println(obj);
+
     }
 }
