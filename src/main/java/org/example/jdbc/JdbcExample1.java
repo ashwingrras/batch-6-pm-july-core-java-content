@@ -19,6 +19,13 @@ import java.sql.Statement;
         9. CallableStatement
         10. Transaction
         11. BatchProcessing
+        12. RowSet
+        13. Result Set
+            1. with Scrollable: sensitive, insensitive, forward only
+            2. readonly
+            3. updatable
+
+
 
 
  */

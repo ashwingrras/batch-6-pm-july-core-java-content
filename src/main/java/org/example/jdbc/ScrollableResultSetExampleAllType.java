@@ -1,9 +1,11 @@
-package org.example.jdbc.examples;
+package org.example.jdbc;
 
 import java.sql.*;
 
-public class ScrollableResultSetExample {
+import static org.example.jdbc.MysqlConnectionHandler.getDbConnection;
 
+public class ScrollableResultSetExampleAllType
+{
     private static final String URL = "jdbc:mysql://localhost:3306/core_batch_5_30";
     private static final String USER = "root";
     private static final String PASSWORD = "ashwin1234";
@@ -18,17 +20,37 @@ public class ScrollableResultSetExample {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
             //statement
-            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            //statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             //statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            //statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
             //statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
             // 100, 1, last and mid
             resultSet = statement.executeQuery("SELECT * FROM student_primary");
 
+
             // Move to the last row
             if (resultSet.last())
             {
                 System.out.println("Last row: ");
+                printCurrentRow(resultSet);
+            }
+
+            String insertQuery = "insert into student_primary (name, address, mobile_no) values (\"scrollTest105\", \"sriganganagar\",\"5232008876\");";
+
+            // with Statement
+            Statement statement2 = connection.createStatement();
+            boolean queryResult = statement2.execute(insertQuery);
+            System.out.println("queryResult "+queryResult);
+
+            Thread.sleep(2000);
+
+            // Move to the last row
+            if (resultSet.last())
+            {
+                System.out.println("Last row Again : ");
                 printCurrentRow(resultSet);
             }
 
@@ -52,7 +74,9 @@ public class ScrollableResultSetExample {
                 System.out.println("Previous row from current position: ");
                 printCurrentRow(resultSet);
             }
-
+            resultSet.close();
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -68,7 +92,8 @@ public class ScrollableResultSetExample {
     }
 
     //TODO here we printing current row of cursor
-    private static void printCurrentRow(ResultSet resultSet) throws SQLException {
+    private static void printCurrentRow(ResultSet resultSet) throws SQLException
+    {
         int id = resultSet.getInt("id");
         String name = resultSet.getString("name");
         String address = resultSet.getString("address");
@@ -81,4 +106,3 @@ public class ScrollableResultSetExample {
         System.out.println();
     }
 }
-

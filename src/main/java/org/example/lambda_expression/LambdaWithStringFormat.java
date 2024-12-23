@@ -1,5 +1,6 @@
 package org.example.lambda_expression;
 
+@FunctionalInterface
 interface StringFunction {
     String run(String str);
 }
@@ -7,6 +8,7 @@ interface StringFunction {
 
 public class LambdaWithStringFormat {
     public static void main(String[] args) {
+
         StringFunction exclaim = (s) -> s + "!";
         StringFunction ask = (s) -> s + "?";
         printFormatted("Aha", exclaim);

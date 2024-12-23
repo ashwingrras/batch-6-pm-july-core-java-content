@@ -7,12 +7,12 @@ public class StringLengthByLambda {
 
     private double data;
 
-    public static void main(String[] abcd) {
+    public static void main(String[] abcd)
+    {
         Add get = (a) -> a.length();       //LAMBDA EXPRESSION For getting string length numbers
         System.out.println(get.getStrlen("ashwin"));
         sum(2, 5);
         sum(2.5, 5.5);
-
         StringLengthByLambda stringLengthByLambda = new StringLengthByLambda();
     }
 

@@ -20,7 +20,7 @@ public class MysqlConnectionHandler
             //String jdbcUrl = "jdbc:mysql://localhost:3306/grras?useUnicode=true&characterEncoding=UTF-8";
             String database = "core_batch_5_30";
             String databaseVakul = "learnjoins";
-            String jdbcUrl = "jdbc:mysql://localhost:3306/"+databaseVakul;
+            String jdbcUrl = "jdbc:mysql://localhost:3306/"+database;
 
             connection= DriverManager.getConnection(jdbcUrl,"root","ashwin1234");
             ///////// END ///////////

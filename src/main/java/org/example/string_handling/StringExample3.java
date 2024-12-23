@@ -60,5 +60,7 @@ public class StringExample3
         // aashish
         // ashi
 
+        String name = "vakul";
+        System.out.println(name.substring(2,5));
     }
 }

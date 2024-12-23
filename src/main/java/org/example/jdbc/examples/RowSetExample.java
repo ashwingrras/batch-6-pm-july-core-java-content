@@ -5,13 +5,13 @@ import javax.sql.rowset.RowSetProvider;
 
 public class RowSetExample {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/grras?useUnicode=true&characterEncoding=UTF-8";
+        String url = "jdbc:mysql://localhost:3306/grras";
         String username = "root";
         String password = "ashwin1234";
 
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             JdbcRowSet jdbcRowSet = RowSetProvider.newFactory().createJdbcRowSet();
 
             jdbcRowSet.setUrl(url);
