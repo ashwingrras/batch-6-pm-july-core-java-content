@@ -1,5 +1,7 @@
 package org.example.lambda_expression;
 
+import java.util.Arrays;
+
 interface Add{
     int getStrlen(String a);
 }

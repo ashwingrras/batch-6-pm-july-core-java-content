@@ -13,10 +13,15 @@ public class StringLength
 
     private static int recLen(String str)
     {
-        if (str.equals(""))
+        if (str.isEmpty())
+        {
             return 0;
+        }
         else
+        {
             return recLen(str.substring(1)) + 1;
+        }
+
     }
 
 }

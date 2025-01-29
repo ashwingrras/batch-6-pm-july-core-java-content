@@ -24,7 +24,6 @@ public class ControlStatement
 {
   public static void main(String[] args) 
   {
-
     // normal if & else
     int a = 10;
     int b = 15;
